@@ -1,12 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'built-in'
-        }
-    }
-    triggers {
-        pollSCM '* * * * *'
-    }
+    agent any
     stages {
         stage('Build') {
             tools {
@@ -15,7 +8,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh '''
-                dotnet build Jenkins-build.sln
+                dotnet build
                 '''
             }
         }
